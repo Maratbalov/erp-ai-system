@@ -18,7 +18,7 @@ export function Header({ onMenuClick, onAiChatToggle, aiChatOpen }: HeaderProps)
   const { user, signOut } = useAuth();
 
   return (
-    <div className="relative z-10 flex-shrink-0 flex h-16 bg-white dark:bg-gray-800 shadow border-b border-gray-200 dark:border-gray-700">
+    <div className="sticky top-0 z-40 flex h-16 bg-white dark:bg-gray-800 shadow border-b border-gray-200 dark:border-gray-700">
       {/* Mobile menu button */}
       <button
         type="button"
@@ -28,9 +28,6 @@ export function Header({ onMenuClick, onAiChatToggle, aiChatOpen }: HeaderProps)
         <Bars3Icon className="h-6 w-6" />
       </button>
 
-      {/* Desktop sidebar spacing */}
-      <div className="hidden md:block md:w-64"></div>
-
       <div className="flex-1 px-4 flex justify-between">
         {/* Search */}
         <div className="flex-1 flex">
@@ -38,7 +35,7 @@ export function Header({ onMenuClick, onAiChatToggle, aiChatOpen }: HeaderProps)
             <label htmlFor="search-field" className="sr-only">
               Поиск
             </label>
-            <div className="relative w-full text-gray-400 focus-within:text-gray-600">
+            <div className="relative w-full text-gray-400 focus-within:text-gray-600 max-w-lg">
               <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
                 <MagnifyingGlassIcon className="h-5 w-5" />
               </div>

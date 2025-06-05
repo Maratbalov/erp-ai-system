@@ -41,7 +41,7 @@ body {
   padding: 1rem;
 }
 
-/* Исправление сайдбара */
+/* Исправление сайдбара - удаляем проблемные стили */
 .sidebar {
   transition: transform 0.3s ease-in-out;
 }
@@ -50,10 +50,6 @@ body {
 @media (max-width: 768px) {
   html {
     font-size: 12px !important;
-  }
-  
-  .sidebar {
-    transform: translateX(-100%);
   }
   
   .dashboard-grid {
