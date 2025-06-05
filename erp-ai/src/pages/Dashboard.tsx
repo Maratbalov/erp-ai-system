@@ -7,6 +7,7 @@ import {
   ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
 
+// Updated layout fixes - trigger deployment
 interface MetricCardProps {
   title: string;
   value: string | number;
