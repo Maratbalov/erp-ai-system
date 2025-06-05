@@ -17,18 +17,18 @@ interface MetricCardProps {
 
 function MetricCard({ title, value, change, changeType, icon: Icon }: MetricCardProps) {
   return (
-    <div className="card p-6">
+    <div className="card dashboard-card">
       <div className="flex items-center">
         <div className="flex-shrink-0">
-          <Icon className="h-8 w-8 text-primary-500" />
+          <Icon className="h-6 w-6 text-primary-500" />
         </div>
-        <div className="ml-5 w-0 flex-1">
+        <div className="ml-4 w-0 flex-1">
           <dl>
             <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">
               {title}
             </dt>
             <dd className="flex items-baseline">
-              <div className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              <div className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                 {value}
               </div>
               {change && (
@@ -95,10 +95,10 @@ export function Dashboard() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 p-4 max-w-full">
       {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+      <div className="mb-6">
+        <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">
           Дашборд
         </h1>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
@@ -107,22 +107,22 @@ export function Dashboard() {
       </div>
 
       {/* Metrics Grid */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="dashboard-grid">
         {metrics.map((metric) => (
           <MetricCard key={metric.title} {...metric} />
         ))}
       </div>
 
       {/* Charts and Tables Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Sales Chart */}
-        <div className="card p-6">
+        <div className="card dashboard-card">
           <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">
             Продажи за последние 7 дней
           </h3>
-          <div className="h-64 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <div className="h-48 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-lg">
             <div className="text-center">
-              <ChartBarIcon className="h-12 w-12 text-gray-400 mx-auto mb-2" />
+              <ChartBarIcon className="h-8 w-8 text-gray-400 mx-auto mb-2" />
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 График будет добавлен с Recharts
               </p>
@@ -131,7 +131,7 @@ export function Dashboard() {
         </div>
 
         {/* Low Stock Alert */}
-        <div className="card p-6">
+        <div className="card dashboard-card">
           <div className="flex items-center mb-4">
             <ExclamationTriangleIcon className="h-5 w-5 text-amber-500 mr-2" />
             <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
@@ -141,15 +141,15 @@ export function Dashboard() {
           <div className="space-y-3">
             {lowStockItems.map((item, index) => (
               <div key={index} className="flex items-center justify-between py-2 border-b last:border-b-0 border-gray-200 dark:border-gray-700">
-                <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
                     {item.name}
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     Минимум: {item.min} шт.
                   </p>
                 </div>
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 ml-2 flex-shrink-0">
                   {item.stock} шт.
                 </span>
               </div>
@@ -159,7 +159,7 @@ export function Dashboard() {
       </div>
 
       {/* Recent Orders */}
-      <div className="card p-6">
+      <div className="card dashboard-card">
         <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">
           Последние заказы
         </h3>
@@ -167,16 +167,16 @@ export function Dashboard() {
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
             <thead className="bg-gray-50 dark:bg-gray-800">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   ID
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Клиент
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Сумма
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Статус
                 </th>
               </tr>
@@ -184,16 +184,16 @@ export function Dashboard() {
             <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
               {recentOrders.map((order) => (
                 <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">
                     #{order.id}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
                     {order.client}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                  <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
                     {order.amount}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 py-4 whitespace-nowrap">
                     <span
                       className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                         order.status === 'confirmed'
@@ -203,7 +203,7 @@ export function Dashboard() {
                           : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
                       }`}
                     >
-                      {order.status === 'confirmed' ? 'Подтвержден' :
+                      {order.status === 'confirmed' ? 'Подтвержден' : 
                        order.status === 'shipped' ? 'Отправлен' : 'Черновик'}
                     </span>
                   </td>

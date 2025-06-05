@@ -2,19 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Глобальные исправления */
+html {
+  font-size: 14px !important;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 @layer base {
   body {
     @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+/* Исправление больших элементов */
+.recharts-wrapper,
+.recharts-surface {
+  max-width: 100% !important;
+  max-height: 400px !important;
+}
+
+/* Исправление дашборда */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.dashboard-card {
+  max-width: 100%;
+  padding: 1rem;
+}
+
+/* Исправление сайдбара */
+.sidebar {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   html {
-    scroll-behavior: smooth;
+    font-size: 12px !important;
+  }
+  
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+  
+  .dashboard-card {
+    padding: 0.75rem;
+  }
+}
+
+/* Дополнительные исправления */
+@media (max-width: 480px) {
+  html {
+    font-size: 11px !important;
+  }
+  
+  .dashboard-grid {
+    gap: 0.5rem;
   }
 }
 
 @layer components {
   .btn {
     @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+    min-height: 2.5rem;
+    padding: 0.5rem 1rem;
   }
   
   .btn-primary {
@@ -35,9 +102,36 @@
   
   .card {
     @apply bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700;
+    max-width: 100%;
+    overflow: hidden;
   }
   
   .input {
     @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-800;
+    max-width: 100%;
   }
+}
+
+/* Исправления для иконок */
+svg {
+  max-width: 1.5rem !important;
+  max-height: 1.5rem !important;
+}
+
+.icon-large svg {
+  max-width: 2rem !important;
+  max-height: 2rem !important;
+}
+
+/* Исправления для хедера */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Исправления для контента */
+main {
+  max-width: 100%;
+  overflow-x: hidden;
 }
